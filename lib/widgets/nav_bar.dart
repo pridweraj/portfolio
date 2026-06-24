@@ -78,12 +78,11 @@ class NavBar extends StatelessWidget implements PreferredSizeWidget {
                     _buildNavItem("Home", 0),
                     _buildNavItem("Skills", 1),
                     _buildNavItem("Projects", 2),
-                    _buildNavItem("Experience", 3),
-                    _buildNavItem("Contact", 4),
+                    _buildNavItem("Contact", 3),
                     const SizedBox(width: 20),
                     // Glassmorphic Contact button
                     TextButton(
-                      onPressed: () => onNavItemTap(4),
+                      onPressed: () => onNavItemTap(3),
                       style: TextButton.styleFrom(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 20, vertical: 14),

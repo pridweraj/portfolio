@@ -7,7 +7,6 @@ import '../widgets/nav_bar.dart';
 import '../sections/hero_section.dart';
 import '../sections/skills_section.dart';
 import '../sections/projects_section.dart';
-import '../sections/experience_section.dart';
 import '../sections/contact_section.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -19,7 +18,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final ScrollController _scrollController = ScrollController();
-  final List<GlobalKey> _sectionKeys = List.generate(5, (_) => GlobalKey());
+  final List<GlobalKey> _sectionKeys = List.generate(4, (_) => GlobalKey());
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   int _activeIndex = 0;
 
@@ -101,41 +100,100 @@ class _HomeScreenState extends State<HomeScreen> {
       endDrawer: isMobile ? _buildDrawer() : null,
       body: SafeArea(
         top: false,
-        child: SingleChildScrollView(
-          controller: _scrollController,
-          child: Column(
-            children: [
-              // Hero Section (Index 0)
-              HeroSection(
-                key: _sectionKeys[0],
-                onViewWorkTap: () => _scrollToSection(2),
-                onContactTap: () => _scrollToSection(4),
+        child: Stack(
+          children: [
+            // Decorative background glowing blur elements
+            Positioned(
+              top: 50,
+              left: -100,
+              child: Container(
+                width: 300,
+                height: 300,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.transparent,
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppColors.primary.withOpacity(0.08),
+                      blurRadius: 100,
+                      spreadRadius: 30,
+                    ),
+                  ],
+                ),
               ),
-              
-              // Skills Section (Index 1)
-              SkillsSection(
-                key: _sectionKeys[1],
+            ),
+            Positioned(
+              top: 400,
+              right: -150,
+              child: Container(
+                width: 400,
+                height: 400,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.transparent,
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppColors.secondary.withOpacity(0.08),
+                      blurRadius: 120,
+                      spreadRadius: 40,
+                    ),
+                  ],
+                ),
               ),
-              
-              // Projects Section (Index 2)
-              ProjectsSection(
-                key: _sectionKeys[2],
+            ),
+            Positioned(
+              top: 900,
+              left: -100,
+              child: Container(
+                width: 350,
+                height: 350,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.transparent,
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppColors.accent.withOpacity(0.06),
+                      blurRadius: 110,
+                      spreadRadius: 35,
+                    ),
+                  ],
+                ),
               ),
-              
-              // Experience Section (Index 3)
-              ExperienceSection(
-                key: _sectionKeys[3],
-              ),
-              
-              // Contact Section (Index 4)
-              ContactSection(
-                key: _sectionKeys[4],
-              ),
+            ),
+            
+            // Main content
+            SingleChildScrollView(
+              controller: _scrollController,
+              child: Column(
+                children: [
+                  // Hero Section (Index 0)
+                  HeroSection(
+                    key: _sectionKeys[0],
+                    onViewWorkTap: () => _scrollToSection(2),
+                    onContactTap: () => _scrollToSection(3),
+                  ),
+                  
+                  // Skills Section (Index 1)
+                  SkillsSection(
+                    key: _sectionKeys[1],
+                  ),
+                  
+                  // Projects Section (Index 2)
+                  ProjectsSection(
+                    key: _sectionKeys[2],
+                  ),
+                  
+                  // Contact Section (Index 3)
+                  ContactSection(
+                    key: _sectionKeys[3],
+                  ),
 
-              // Footer
-              _buildFooter(isMobile),
-            ],
-          ),
+                  // Footer
+                  _buildFooter(isMobile),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -164,8 +222,7 @@ class _HomeScreenState extends State<HomeScreen> {
             _buildDrawerItem("Home", 0),
             _buildDrawerItem("Skills", 1),
             _buildDrawerItem("Projects", 2),
-            _buildDrawerItem("Experience", 3),
-            _buildDrawerItem("Contact", 4),
+            _buildDrawerItem("Contact", 3),
             const Spacer(),
             Padding(
               padding: const EdgeInsets.all(24.0),
