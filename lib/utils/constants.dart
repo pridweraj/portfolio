@@ -41,7 +41,7 @@ class DeveloperData {
       title: "HeartSync - Dating App",
       description: "A modern, highly engaging dating application featuring swipe-based matching, instant real-time chat, detailed user profiles, and a premium glassmorphic UI. Optimized for smooth animations and high responsiveness.",
       techStack: ["Flutter", "Dart", "Firebase", "WebSockets", "Flutter Animate"],
-      githubLink: "https://github.com/pridweraj",
+      githubLink: "https://github.com/pridweraj/dating_app1",
       liveLink: "https://example.com",
     ),
     ProjectItem(
